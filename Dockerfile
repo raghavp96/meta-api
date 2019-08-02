@@ -8,4 +8,8 @@ ADD slack/ slack/
 
 RUN ls -la
 
-ENTRYPOINT ["python", "app.py"]
+# Env Vars in the Docker instance
+ENV ON_HEROKU 1
+ENV PORT 8080
+
+ENTRYPOINT ["gunicorn", "wsgi"]

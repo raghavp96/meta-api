@@ -1,8 +1,10 @@
+PORT=8080
+
 build:
 	docker build -t api-svc .
 
 run:
-	docker run --name api-svc -p 8000:8000 --detach api-svc
+	docker run --name api-svc -p 8000:$(PORT) --detach api-svc
 
 stop:
 	docker stop api-svc

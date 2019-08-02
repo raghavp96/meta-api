@@ -12,8 +12,10 @@ def hello_world():
     return jsonify(info)
 
 # Route for Slack Apps
-@application.route('/slack/apps/<appName>/<command>', methods=["GET", 'POST'])
+@application.route('/slack/apps/<appName>/<command>', methods=['GET', 'POST'])
 def query_slack_app(appName, command):
+    if request.method == 'GET':
+        return jsonify({ "Text" : "Hit this endpoint with a POST request instead to actually do something" })
     return jsonify(performSlackAction(appName, command, [ "None" ]))
     
     
