@@ -9,12 +9,15 @@ A little backstory:
 ### Notes to Self
 
 - Run with Docker:
-    - make build 
-    - make run
-    - make stop
-    - make clean
+    - `make build `
+    - `make run`
+    - `make stop`
+    - `make clean`
 
-- Run in Conda Environment
-    - conda activate slack_app_env
-    - python app.py
+- Run with gunicorn:
+    - `gunicorn wsgi`
+
+- Run in Conda Environment (Should never need to do this)
+    - `conda activate slack_app_env`
+    - `python app.py`
 
