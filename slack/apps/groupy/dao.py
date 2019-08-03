@@ -94,11 +94,11 @@ def update_team_update_group_members(team_id, group_name, members, collection, m
                     '$pull' : { 
                         db_groups_key : { 
                             db_group_name_key : group_name,
-                            db_members_key : old_members }}})
+                        }}})
 
             if result.acknowledged:
                 result = collection.update_one(
-                    { db_team_id_key : team_id} , 
+                    { db_team_id_key : team_id } , 
                     {
                         '$push' : { 
                             db_groups_key : { 

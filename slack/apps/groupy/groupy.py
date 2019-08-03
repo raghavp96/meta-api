@@ -25,7 +25,7 @@ def add_to_group(values):
 
 def remove_from_group(values):
     if update_group_members(values[json_team_id_key], values[json_group_name_key], values[json_users_id_key], method="remove"):
-        return { "Text" : "Removing from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
+        return { "Text" : "Removed from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
     else:
         return { "Text" : "Could not remove from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}            
 
