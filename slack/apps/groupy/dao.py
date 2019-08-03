@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from .constants import db_team_id_key, db_groups_key, db_group_name_key, db_members_key
 
 ## DAO - store the user group info in Mongo Atlas (My team 205 cluster )
 
@@ -21,11 +22,11 @@ dbName = 'meta-api'
 collectionName = 'teams'
 
 template_doc = {
-    'TeamId' : "",
-    'Groups' : [
+    db_team_id_key : "",
+    db_groups_key : [
         {
-            'GroupName' : "",
-            'Members' :  []
+            db_group_name_key : "",
+            db_members_key :  []
         }
     ]
 }
@@ -39,11 +40,11 @@ def get_collection():
 def create_new_team_document(team_id, group_name, members, collection):
     result = collection.insert_one(
             {
-                'TeamId' : team_id,
-                'Groups' : [
+                db_team_id_key : team_id,
+                db_groups_key : [
                     {
-                        'GroupName' : group_name,
-                        'Members' :  members
+                        db_group_name_key : group_name,
+                        db_members_key :  members
                     }
                 ]
             }
@@ -52,37 +53,37 @@ def create_new_team_document(team_id, group_name, members, collection):
 
 def update_team_add_new_group(team_id, group_name, members, collection):
     # method called when team exists, so it team should not be None
-    team = collection.find_one({ 'TeamId' : team_id})
+    team = collection.find_one({ db_team_id_key : team_id})
     
-    for group in team['Groups']:
-        if group['GroupName'] == group_name:
+    for group in team[db_groups_key]:
+        if group[db_group_name_key] == group_name:
             return {"Text" : group_name + " already exists as a group in this workspace" }
     
     result = teams.update_one(
-        { 'TeamId': team_id} , 
+        { db_team_id_key : team_id} , 
         {
             '$push' : { 
-                'Groups' : { 
-                    'GroupName' : group_name, 
-                    'Members' : members }}})
+                db_groups_key : { 
+                    db_group_name_key : group_name, 
+                    db_members_key : members }}})
 
     return result
 
 def update_team_update_group(team_id, group_name, members, collection):
     # method called when team exists, so it team should not be None
-    team = collection.find_one({ 'TeamId' : team_id})
+    team = collection.find_one({ db_team_id_key : team_id})
     
-    for group in team['Groups']:
-        if group['GroupName'] == group_name:
+    for group in team[db_groups_key]:
+        if group[db_group_name_key] == group_name:
             return {"Text" : group_name + " already exists as a group in this workspace" }
     
     result = teams.update_one(
-        { 'TeamId': team_id} , 
+        { db_team_id_key : team_id} , 
         {
             '$push' : { 
-                'Groups' : { 
-                    'GroupName' : group_name, 
-                    'Members' : members }}})
+                db_groups_key : { 
+                    db_group_name_key : group_name, 
+                    db_members_key : members }}})
 
     return result
 

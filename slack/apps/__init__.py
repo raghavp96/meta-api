@@ -4,11 +4,11 @@ from .groupy import doGroup
 apps = [
     {
         "Name" : "hello",
-        "Command" : hello.doHello
+        "Command" : doHello
     },
     {
         "Name" : "groupy",
-        "Command" : groupy.doGroup
+        "Command" : doGroup
     }
 ]
 

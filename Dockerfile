@@ -11,5 +11,6 @@ COPY *.py /
 ADD slack/ slack/
 
 RUN ls -la
+RUN ls slack/apps/groupy
 
 ENTRYPOINT ["gunicorn", "wsgi"]
