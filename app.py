@@ -17,7 +17,7 @@ def query_slack_app(appName, command):
     if request.method == 'GET':
         return jsonify({ "Text" : "Hit this endpoint with a POST request instead to actually do something" })
     return jsonify(performSlackAction(appName, command, request.get_json(force=True)))
-    
+ 
     
 if __name__ == '__main__':
     application.run(debug=True, host='0.0.0.0', port=8000)

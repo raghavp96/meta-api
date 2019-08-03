@@ -5,17 +5,23 @@
 # curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u1", "u2"], "GroupName" : "groupA" }' http://127.0.0.1:8000/slack/apps/groupy/create
 
 
-#  KEYS for JSON
+#  KEYS for JSON - We can block 
 
 team_id_key = "TeamId"
 message_id_key = "MessageId"
 users_id = "Users"
 group_name_key = "GroupName"
 
-# FUNCTIONS
+
+# APP FUNCTIONS
 
 def create_group(values):
-    return { "Text" : "Creating group " + values[group_name_key] + " for team " + values[team_id_key] + " with members " + str(values[users_id])}
+    team_id = values[team_id_key]
+    group_name = values[group_name_key]
+    members = values[users_id]
+
+    
+    return { "Text" : result}
 
 def add_to_group(values):
     return { "Text" : "Adding to group " + values[group_name_key] + " for team " + values[team_id_key] + " the following members " + str(values[users_id])}
