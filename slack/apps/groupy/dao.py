@@ -131,3 +131,16 @@ def update_group_members(team_id, group_name, members, method):
         return False
     else:
         return update_team_update_group_members(team_id, group_name, members, collection, method)
+
+
+def list_team_groups(team_id):
+    collection = get_collection()
+
+    if collection.count() == 0:
+        return []
+    else:
+        # method called when team exists, so it team should not be None
+        team = collection.find_one({ db_team_id_key : team_id})
+
+        groups = team[db_groups_key]
+        return [group[db_group_name_key] for group in groups]

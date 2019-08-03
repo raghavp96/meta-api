@@ -1,5 +1,5 @@
 from .constants import json_group_name_key, json_team_id_key, json_message_id_key, json_users_id_key
-from .dao import create_new_group, update_group_members
+from .dao import create_new_group, update_group_members, list_team_groups
 
 # Groupy App
 ## Group manages user groups in slack.
@@ -35,7 +35,7 @@ def list_members_in_group(values):
 
 
 def list_groups(values):
-    return { "Text" : "Listing groups for team " + values[json_team_id_key]}
+    return { "Groups" : list_team_groups(values[json_team_id_key]) }
 
 
 def delete_group(values):
