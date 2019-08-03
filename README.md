@@ -8,11 +8,11 @@ A little backstory:
 
 ### Notes to Self
 
-- Run with Docker:
-    - `make build `
+- Ensure local Mongo instance is up and running on port 27017 (If I want to test groupy slack app features locally)
+
+- Run with Makefile:
     - `make run`
-    - `make stop`
-    - `make clean`
+    
 
 - Run with gunicorn:
     - `gunicorn wsgi`

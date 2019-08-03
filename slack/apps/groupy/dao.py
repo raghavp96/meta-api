@@ -26,16 +26,6 @@ else:
 dbName = db_name
 collectionName = 'teams'
 
-template_doc = {
-    db_team_id_key : "1",
-    db_groups_key : [
-        {
-            db_group_name_key : "2",
-            db_members_key :  ["U1", "U2"]
-        }
-    ]
-}
-
 def get_collection():
     client = MongoClient(mongoURI)
     db = client[dbName]
