@@ -1,4 +1,5 @@
 from .constants import json_group_name_key, json_team_id_key, json_message_id_key, json_users_id_key
+from .dao import create_new_group, update_group_members
 
 # Groupy App
 ## Group manages user groups in slack.
@@ -9,22 +10,37 @@ from .constants import json_group_name_key, json_team_id_key, json_message_id_ke
 # APP FUNCTIONS
 
 def create_group(values): 
-    return { "Text" : "Creating group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " with members " + str(values[json_users_id_key])}
+    if create_new_group(values[json_team_id_key], values[json_group_name_key], values[json_users_id_key]):
+        return { "Text" : "Created group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " with members " + str(values[json_users_id_key])}
+    else:
+        return { "Text" : "Could not create group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " with members " + str(values[json_users_id_key])}
+
 
 def add_to_group(values):
-    return { "Text" : "Adding to group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
+    if update_group_members(values[json_team_id_key], values[json_group_name_key], values[json_users_id_key], method="add"):
+        return { "Text" : "Added to group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
+    else:
+        return { "Text" : "Could not add to group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}            
+
 
 def remove_from_group(values):
-    return { "Text" : "Removing from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
+    if update_group_members(values[json_team_id_key], values[json_group_name_key], values[json_users_id_key], method="remove"):
+        return { "Text" : "Removing from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}
+    else:
+        return { "Text" : "Could not remove from group " + values[json_group_name_key] + " for team " + values[json_team_id_key] + " the following members " + str(values[json_users_id_key])}            
+
 
 def list_members_in_group(values):
     return { "Text" : "Listing members in group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
 
+
 def list_groups(values):
     return { "Text" : "Listing groups for team " + values[json_team_id_key]}
 
+
 def delete_group(values):
     return { "Text" : "Deleting group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
+
 
 # GATEWAY
 
