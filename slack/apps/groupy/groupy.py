@@ -1,5 +1,5 @@
 from .constants import json_group_name_key, json_team_id_key, json_message_id_key, json_users_id_key
-from .dao import create_new_group, update_group_members, list_team_groups
+from .dao import create_new_group, update_group_members, list_team_groups, list_team_group_members, delete_team_group
 
 # Groupy App
 ## Group manages user groups in slack.
@@ -31,7 +31,7 @@ def remove_from_group(values):
 
 
 def list_members_in_group(values):
-    return { "Text" : "Listing members in group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
+    return { "Members" : list_team_group_members(values[json_team_id_key], values[json_group_name_key]) }
 
 
 def list_groups(values):
@@ -39,7 +39,10 @@ def list_groups(values):
 
 
 def delete_group(values):
-    return { "Text" : "Deleting group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
+    if delete_team_group(values[json_team_id_key], values[json_group_name_key]):
+        return { "Text" : "Deleted group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
+    else:
+        return { "Text" : "Could not delete group " + values[json_group_name_key] + " for team " + values[json_team_id_key]}
 
 
 # GATEWAY

@@ -139,8 +139,51 @@ def list_team_groups(team_id):
     if collection.count() == 0:
         return []
     else:
-        # method called when team exists, so it team should not be None
         team = collection.find_one({ db_team_id_key : team_id})
 
-        groups = team[db_groups_key]
-        return [group[db_group_name_key] for group in groups]
+        if team is None:
+            return []
+        else:
+            groups = team[db_groups_key]
+            return [group[db_group_name_key] for group in groups]
+
+
+def list_team_group_members(team_id, group_name):
+    collection = get_collection()
+
+    if collection.count() == 0:
+        return []
+    else:
+        team = collection.find_one({ db_team_id_key : team_id})
+
+        if team is None:
+            return []
+        else:
+            for group in team[db_groups_key]:
+                if group[db_group_name_key] == group_name:
+                    return group[db_members_key]
+            return []
+
+
+def delete_team_group(team_id, group_name):
+    collection = get_collection()
+
+    if collection.count() == 0:
+        return False
+    else:
+        team = collection.find_one({ db_team_id_key : team_id})
+
+        if team is None:
+            return False
+        else:
+            for group in team[db_groups_key]:
+                if group[db_group_name_key] == group_name:
+                    result = collection.update_one(
+                        { db_team_id_key : team_id } , 
+                        {
+                            '$pull' : { 
+                                db_groups_key : { 
+                                    db_group_name_key : group_name,
+                                }}})
+                    return result.acknowledged
+            return False
