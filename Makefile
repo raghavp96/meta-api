@@ -2,4 +2,4 @@ run:
 	gunicorn  wsgi
 
 clean:
-	rm -r $(find . -name '__pycache__')
+	find . -name '__pycache__' -type d -exec rm -rf {} +
