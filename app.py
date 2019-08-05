@@ -17,7 +17,10 @@ def hello_world():
 def query_slack_app(appName, command):
     if request.method == 'GET':
         return jsonify({ "Text" : "Hit this endpoint with a POST request instead to actually do something" })
-    return jsonify(performSlackAction(appName, command, request.get_json(force=True)))
+    if request.is_json:
+        return jsonify(performSlackAction(appName, command, request.get_json(force=True)))
+    else:
+        return jsonify(performSlackAction(appName, command, request.form))
  
     
 if __name__ == '__main__':
