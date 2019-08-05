@@ -1,5 +1,5 @@
 from .hello import doHello
-from .groupy import doGroup
+from .groupy import doGroupSlashCommand
 
 apps = [
     {
@@ -8,7 +8,7 @@ apps = [
     },
     {
         "Name" : "groupy",
-        "Command" : doGroup
+        "Command" : doGroupSlashCommand
     }
 ]
 

@@ -1,5 +1,5 @@
-from .groupy import doGroup as do
+from .groupy import doGroupSlashCommand as do
 from .constants import *
 
-def doGroup(command, args):
+def doGroupSlashCommand(command, args):
     return do(command, args)

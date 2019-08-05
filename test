@@ -1,16 +1,11 @@
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g1 u1 u2 u3' http://127.0.0.1:8000/slack/apps/groupy/create
-
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=2&text=g1 u4 u5' http://127.0.0.1:8000/slack/apps/groupy/create
-
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g2 u3 u6' http://127.0.0.1:8000/slack/apps/groupy/create
 
-
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=2&text=g1 u7' http://127.0.0.1:8000/slack/apps/groupy/add-to
-
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g1 u3' http://127.0.0.1:8000/slack/apps/groupy/add-to
 
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g2 u2' http://127.0.0.1:8000/slack/apps/groupy/remove-from
-
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g2 u6' http://127.0.0.1:8000/slack/apps/groupy/remove-from
 
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g2 u6' http://127.0.0.1:8000/slack/apps/groupy/list-members
@@ -20,6 +15,8 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g3' http://127.0.0.1:8000/slack/apps/groupy/list
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=' http://127.0.0.1:8000/slack/apps/groupy/list 
 
+
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g1' http://127.0.0.1:8000/slack/apps/groupy/tag-group
 
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g3' http://127.0.0.1:8000/slack/apps/groupy/delete
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'team_id=1&text=g2' http://127.0.0.1:8000/slack/apps/groupy/delete
