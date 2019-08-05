@@ -81,10 +81,27 @@ commands = [
 ]
 
 
+def __parseRequestData(data):
+    relevantArgs = {}
+    relevantArgs[json_team_id_key] = data["team_id"]
+    text = data["text"].split()
+
+    if len(text) == 1:
+        relevantArgs[json_group_name_key] = text[0]
+    
+    elif len(text) > 1:
+        relevantArgs[json_group_name_key] = text[0]
+        relevantArgs[json_users_id_key] = text[1:]
+
+    return relevantArgs
+
+
 def doGroup(command, args):
+    parsedArgs = __parseRequestData(args)
+    # print(parsedArgs)
     for item in commands:
-        if item["Name"] == command and checkNecessaryArgsExist(item["RequiredKeys"], args):
-            return item["Function"](args) 
+        if item["Name"] == command and checkNecessaryArgsExist(item["RequiredKeys"], parsedArgs):
+            return item["Function"](parsedArgs) 
     return { "Text" : "Echoing command:" }
     
 
