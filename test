@@ -1,0 +1,20 @@
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u1", "u2"], "GroupName" : "groupA" }' http://127.0.0.1:8000/slack/apps/groupy/create
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "2", "Users" : ["u4", "u5", "u6"], "GroupName" : "groupA" }' http://127.0.0.1:8000/slack/apps/groupy/create
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u2", "u3"], "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/create
+
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u3"], "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/add-to      
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u4"], "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/add-to 
+ 
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u1"], "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/remove-from
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "Users" : ["u2"], "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/remove-from
+
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "2", "GroupName" : "groupC" }' http://127.0.0.1:8000/slack/apps/groupy/list-members        
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/list-members
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "2", "GroupName" : "groupB" }' http://127.0.0.1:8000/slack/apps/groupy/list-members       
+
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "2" }' http://127.0.0.1:8000/slack/apps/groupy/list
+
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "GroupName" : "groupB"  }' http://127.0.0.1:8000/slack/apps/groupy/delete
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "GroupName" : "groupC"  }' http://127.0.0.1:8000/slack/apps/groupy/delete
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "1", "GroupName" : "groupA"  }' http://127.0.0.1:8000/slack/apps/groupy/delete
+curl -i -X POST -H "Content-Type: application/json" -d '{ "TeamId" : "2", "GroupName" : "groupA"  }' http://127.0.0.1:8000/slack/apps/groupy/delete
