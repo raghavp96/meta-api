@@ -1,9 +1,14 @@
 from .hello import doHello
+from .groupy import doGroup
 
 apps = [
     {
         "Name" : "hello",
-        "Command" : hello.doHello
+        "Command" : doHello
+    },
+    {
+        "Name" : "groupy",
+        "Command" : doGroup
     }
 ]
 

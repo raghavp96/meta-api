@@ -8,13 +8,16 @@ A little backstory:
 
 ### Notes to Self
 
-- Run with Docker:
-    - make build 
-    - make run
-    - make stop
-    - make clean
+- Ensure local Mongo instance is up and running on port 27017 (If I want to test groupy slack app features locally)
 
-- Run in Conda Environment
-    - conda activate slack_app_env
-    - python app.py
+- Run with Makefile:
+    - `make run`
+    
+
+- Run with gunicorn:
+    - `gunicorn wsgi`
+
+- Run in Conda Environment (Should never need to do this)
+    - `conda activate slack_app_env`
+    - `python app.py`
 
