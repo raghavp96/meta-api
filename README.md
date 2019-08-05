@@ -24,6 +24,7 @@ A little backstory: My friend circle uses Slack as our group chat (we love chann
             - `/slack/apps/groupy/list-members`: Needs "TeamId", "GroupName"
             - `/slack/apps/groupy/list`: Needs "TeamId"
             - `/slack/apps/groupy/delete`: Needs "TeamId", "GroupName"
+            - `/slack/apps/groupy/tag-group`: Needs "TeamId", "GroupName"
         - Misc:
             - To store this information we use MongoDB's Atlas, and to run and test this feature locally one needs only to have a local Mongo instance running on the default port.
 
