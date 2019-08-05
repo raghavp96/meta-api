@@ -1,6 +1,7 @@
 from app import application
 import os
 
+
 if __name__ == "__main__":
     # ON_HEROKU will be 1 if True
     ON_HEROKU = os.environ.get('ON_HEROKU', None)

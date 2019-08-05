@@ -80,11 +80,13 @@ commands = [
     }
 ]
 
+
 def doGroup(command, args):
     for item in commands:
         if item["Name"] == command and checkNecessaryArgsExist(item["RequiredKeys"], args):
             return item["Function"](args) 
     return { "Text" : "Echoing command:" }
+    
 
 def checkNecessaryArgsExist(required_args, args):
     for required_arg in required_args:

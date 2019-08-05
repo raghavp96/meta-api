@@ -11,6 +11,7 @@ def hello_world():
     info = {"Text" : "Hi"}
     return jsonify(info)
 
+
 # Route for Slack Apps
 @application.route('/slack/apps/<appName>/<command>', methods=['GET', 'POST'])
 def query_slack_app(appName, command):

@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from .constants import db_name, db_user_profile, db_user_pwd, db_hosts, db_team_id_key, db_groups_key, db_group_name_key, db_members_key
 
-## DAO - store the user group info in Mongo Atlas (My team 205 cluster )
+## DAO - store the user group info in Mongo Atlas
 
 #  An example Document in Teams COllection
 # [
@@ -25,6 +25,7 @@ else:
 
 dbName = db_name
 collectionName = 'teams'
+
 
 def get_collection():
     client = MongoClient(mongoURI)
