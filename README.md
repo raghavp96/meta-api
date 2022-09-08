@@ -1,6 +1,10 @@
 ## meta-api
 
-meta-api is an API that I will be using for varying purposes, e.g. an endpoint that I can use for any Slack apps that I create, content for a website that I might build, etc. Because I'll be using it for perhaps many different things, it's sort of an API for other more single-purpose APIs. It is hosted on Heroku at https://raghav-meta-api.herokuapp.com !
+meta-api is an API that I will be using for varying purposes, e.g. an endpoint that I can use for any Slack apps that I create, content for a website that I might build, etc. Because I'll be using it for perhaps many different things, it's sort of an API for other more single-purpose APIs. ~It is hosted on Heroku at https://raghav-meta-api.herokuapp.com !~
+
+### Deployment
+
+meta-api was deployed on Heroku (Free Tier) using the GitHub Deployment method, Automatic Deploys on push to `master` enabled. **NOTE: Starting November 28, 2022, free Heroku Dynos, free Heroku Postgres, and free Heroku Data for Redis® will no longer be available. As such the Heroku deployment has been removed.**
 
 ### Background
 
@@ -13,7 +17,7 @@ A little backstory: My friend circle uses Slack as our group chat (we love chann
     - Hello: 
         - Description: A dummy app that echoes the name of the command used in the POST request along with whatever args were passed with the request
         - Endpoints: 
-            - `/slack/apps/hello/fakeCommand'
+            - `/slack/apps/hello/fakeCommand`
 
     - Groupy:
         - Description: Groupy manages user groups, a feature that doesn't exist on Slack's free tier! (Note: Didn't think this functionality should need to be able to access Slack, leaving the responsibility of providing the proper arguments to the app which hits this endpoint, i.e., the Slack app)
